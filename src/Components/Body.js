@@ -18,22 +18,33 @@ export const Body = () => {
 
   const [restaurant, setrestaurant] = useState(restaurantList);
   const [SearchInput, setSearchInput] = useState("");
+
   
-  useEffect(()=>{
-  // Api call
-  getRestaurants();
-  },[])
- 
+
   async function getRestaurants(){
 
-    const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.66500&lng=77.44770&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    const data=await fetch(
+      
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.66500&lng=77.44770&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      
+
+      );
+
     const json=await data.json();
-    
-  setrestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+   
+    // console.log(json);
+   
+         setrestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
   }
-     
 
+  
+  useEffect(()=>{
+
+    getRestaurants();    
+
+    },[]);
+ 
 
   return (
     <>
