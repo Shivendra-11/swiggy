@@ -8,9 +8,9 @@ import RestaurantCard from './Restaurantcard';
 // named export:-
 export const Body = () => {
 
-  function filterData(SearchInput, restaurants) {
-    const filterData = restaurants.filter((restaurant) =>
-      restaurant.data?.name.toUpperCase().includes(SearchInput.toUpperCase())
+  function filterData(SearchInput, restaurant) {
+    const filterData = restaurant.filter((restaurant) =>
+      restaurant.info?.name.toUpperCase().includes(SearchInput.toUpperCase())
       
     );
     return filterData;
@@ -23,19 +23,19 @@ export const Body = () => {
 
   async function getRestaurants(){
 
-    const data=await fetch(
+    const info=await fetch(
 
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.66500&lng=77.44770&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       
 
       );
 
-    const json=await data.json();
+    const json=await info.json();
     console.log(json);
     
     
-        //  setrestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setrestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+         setrestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        // setrestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
         // setrestaurant(restaurant)
 
