@@ -31,7 +31,7 @@ export default function AppLayout() {
  <>
  <React.Fragment>
       <Header />
-      <Body />
+      <Body/>
       <Footer />
     </React.Fragment>
  </>

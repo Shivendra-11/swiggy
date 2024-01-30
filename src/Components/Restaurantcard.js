@@ -6,6 +6,10 @@ const RestaurantCard = ({
     cuisines,
     area,
     lastMileTravelString,
+    avgRating,
+    areaName,
+    costForTwo,
+    totalRatingsString,
     
   }) => {
     return (
@@ -20,6 +24,10 @@ const RestaurantCard = ({
         <h4>{cuisines.join(", ")}</h4>
         <h4>{area}</h4>
         <h4>{lastMileTravelString}</h4>
+        <h4>{ avgRating}</h4>
+        <h4>{costForTwo}</h4>
+       <h4>{ totalRatingsString}</h4>
+       
       </div>
     );
   };

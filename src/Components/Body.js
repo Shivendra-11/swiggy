@@ -5,21 +5,26 @@
 import { restaurantList } from '../config';
 import { useState, useEffect } from 'react';
 import RestaurantCard from './Restaurantcard';
+import  Shimmer  from './Shimmer';
 // named export:-
 export const Body = () => {
 
-  function filterData(SearchInput, restaurant) {
-    const filterData = restaurant.filter((restaurant) =>
+  function filterData(SearchInput, allRestaurant) {
+    const filterData = allRestaurant.filter((restaurant) =>
       restaurant.info?.name.toUpperCase().includes(SearchInput.toUpperCase())
       
     );
     return filterData;
   }
-
-  const [restaurant, setrestaurant] = useState(restaurantList);
+   const [allRestaurant ,setAllrestaurant]=useState([]);
+  const [Filteredrestaurant, setFilteredrestaurant] = useState([]);
   const [SearchInput, setSearchInput] = useState("");
 
- 
+  useEffect(()=>{
+
+    getRestaurants();    
+
+    },[]);
 
   async function getRestaurants(){
 
@@ -34,25 +39,29 @@ export const Body = () => {
     console.log(json);
     
     
-         setrestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        // setrestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setAllrestaurant (json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-        // setrestaurant(restaurant)
-
-
+      setFilteredrestaurant (json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
-  useEffect(()=>{
 
-    getRestaurants();    
+  
+  // not render component (Early return )
+if(!allRestaurant) return null;
 
-    },[]);
-
-
+if(Filteredrestaurant.length === 0) {
+  return(
+    <>
+    
+    <h1>no restaurant</h1>
+    </>
+  ) 
+  }
  
- 
 
-  return (
+  return   (allRestaurant?.length == 0) ? (<Shimmer/>) :
+  
+  (
     <>
       <div className='Search-Container' >
         <input type="text"
@@ -66,10 +75,10 @@ export const Body = () => {
 
         />
         <button onClick={()=>{
-          // filter the data..
-          const data=filterData(SearchInput,restaurant)
+          // filter the data.. 
+          const data=filterData (SearchInput , allRestaurant)
 // Now ui is stored the input restaurant list 
-            setrestaurant(data);
+            setFilteredrestaurant(data);
         }}  >Search</button>
 
       </div>
@@ -77,10 +86,11 @@ export const Body = () => {
 
 
       <div className="restaurant-list">
-        {restaurant.map((restaurant) => {
+        {/* writ logic to no restaurant found */}
+        {Filteredrestaurant.map((restaurant) => {
           return <RestaurantCard key={restaurant.info.id} {...restaurant.info} />;
         })}
       </div>
     </>
   );
-};
+}
