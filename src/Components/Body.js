@@ -39,7 +39,7 @@ export const Body = () => {
     console.log(json);
     
     
-        setAllrestaurant (json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setAllrestaurant (json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
       setFilteredrestaurant (json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
@@ -47,19 +47,19 @@ export const Body = () => {
 
   
   // not render component (Early return )
-if(!allRestaurant) return null;
+// if(!allRestaurant) return null;
 
-if(Filteredrestaurant.length === 0) {
-  return(
-    <>
+// if(Filteredrestaurant?.length === 0) {
+//   return(
+//     <>
     
-    <h1>no restaurant</h1>
-    </>
-  ) 
-  }
+//     <h1>no restaurant</h1>
+//     </>
+//   ) 
+//   }
  
 
-  return   (allRestaurant?.length == 0) ? (<Shimmer/>) :
+  return   (allRestaurant?.length === 0) ? (<Shimmer/>) :
   
   (
     <>

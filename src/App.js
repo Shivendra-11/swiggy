@@ -6,6 +6,7 @@ import {Body} from './Components/Body';
 import Footer from './Components/Footer'
 import {IMG_CDN_URL} from './config'
 import './index.css';
+import Shimmer from './Components/Shimmer';
 
 
 /* My Food App structure will look like this, 
@@ -31,6 +32,7 @@ export default function AppLayout() {
  <>
  <React.Fragment>
       <Header />
+     
       <Body/>
       <Footer />
     </React.Fragment>
