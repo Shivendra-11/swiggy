@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
-
 // import {Body} from   './Components/Body';
 import { Body } from "./Components/Body";
 import Footer from "./Components/Footer";
@@ -12,6 +11,7 @@ import About from "./Components/About";
 import Contact from "./Components/Contact";
 import Error from "./Components/Error";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RestrauntMenu from "./Components/RestrauntMenu";
 
 /* My Food App structure will look like this, 
             1) Header
@@ -43,6 +43,7 @@ export default function AppLayout() {
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/" element={<Body />} />
           <Route  path="/*" element={<Error />} />
+          <Route  path="/restaurant/:id" element={<RestrauntMenu />} />
         </Routes>
         {/* this header and footer are have to keep with every page  */}
         <Footer />

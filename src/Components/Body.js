@@ -31,12 +31,12 @@ export const Body = () => {
     const info=await fetch(
 
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.66500&lng=77.44770&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      
 
+      
       );
 
     const json=await info.json();
-    console.log(json);
+    // console.log(json);
     
     
       setAllrestaurant (json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
