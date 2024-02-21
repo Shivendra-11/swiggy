@@ -6,6 +6,7 @@ import { restaurantList } from '../config';
 import { useState, useEffect } from 'react';
 import RestaurantCard from './Restaurantcard';
 import  Shimmer  from './Shimmer';
+import { Link } from 'react-router-dom';
 // named export:-
 export const Body = () => {
 
@@ -87,8 +88,14 @@ export const Body = () => {
 
       <div className="restaurant-list">
         {/* writ logic to no restaurant found */}
+        
         {Filteredrestaurant.map((restaurant) => {
-          return <RestaurantCard key={restaurant.info.id} {...restaurant.info} />;
+
+          return(
+          <Link  to={"/restaurant/"+restaurant.info.id}  key={restaurant.info.id}  >
+           <RestaurantCard  {...restaurant.info} />;
+           </Link>
+          )
         })}
       </div>
     </>
