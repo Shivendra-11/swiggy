@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
 // import {Body} from   './Components/Body';
@@ -12,6 +12,8 @@ import Contact from "./Components/Contact";
 import Error from "./Components/Error";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RestrauntMenu from "./Components/RestrauntMenu";
+import Profile from "./Components/Profile";
+// import Instamart from "./Components/Instamart";
 
 /* My Food App structure will look like this, 
             1) Header
@@ -31,6 +33,11 @@ import RestrauntMenu from "./Components/RestrauntMenu";
        
 */
 
+// lazy import ---use when too many components are there if we use lazy load import then our component will onlyh be trigger if we click on it..
+
+const Instamart=lazy(()=>
+  import("./Components/Instamart"))
+
 export default function AppLayout() {
   return (
     <>
@@ -39,11 +46,18 @@ export default function AppLayout() {
 
         <Routes>
         {/* we have to use nav bar list item to be load quickly then we use this */}
-          <Route exact  path="/about" element={<About />} />
+         
+          <Route exact  path="/about" element={<About />} >
+            {/* nested react routing */}
+           <Route  path="profile" element={<Profile />} />
+          
+            </Route>
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/" element={<Body />} />
           <Route  path="/*" element={<Error />} />
           <Route  path="/restaurant/:id" element={<RestrauntMenu />} />
+
+          <Route  path="/Instamart" element={<Suspense><Instamart /></Suspense>} />
         </Routes>
         {/* this header and footer are have to keep with every page  */}
         <Footer />

@@ -1,12 +1,12 @@
 // Body Component for body section: It contain all restaurant cards
 // We are mapping restaurantList array and passing data to RestaurantCard component as props with unique key as index
-
-
+import useStatus from '../utils/useStatus';
 import { restaurantList } from '../config';
 import { useState, useEffect } from 'react';
 import RestaurantCard from './Restaurantcard';
 import  Shimmer  from './Shimmer';
 import { Link } from 'react-router-dom';
+
 // named export:-
 export const Body = () => {
 
@@ -37,7 +37,7 @@ export const Body = () => {
       );
 
     const json=await info.json();
-    // console.log(json);
+    console.log(json);
     
     
       setAllrestaurant (json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -45,8 +45,15 @@ export const Body = () => {
       setFilteredrestaurant (json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
+  const isOnline =useStatus();
+  if(! isOnline){
+    return <h1>  🔴 Check your internet connection</h1>
+  }
 
-  
+
+
+
+
   // not render component (Early return )
 // if(!allRestaurant) return null;
 

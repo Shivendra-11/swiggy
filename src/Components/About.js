@@ -1,3 +1,5 @@
+// import Profile from "./Profile";
+import { Outlet } from "react-router-dom";
 const About=()=>{
     return(
         <div className="about-us">
@@ -8,6 +10,8 @@ const About=()=>{
       <p>Behind every successful order is a dedicated team of professionals working tirelessly to ensure a smooth and enjoyable experience for all stakeholders. From our talented engineers and product designers to our passionate customer support executives and delivery partners, every member of the Swiggy family plays a vital role in our success.</p>
       <p>At Swiggy, we are not just building a business; we are shaping the future of food delivery in India. Our commitment to excellence, innovation, and customer satisfaction drives us forward every day as we continue to redefine the food delivery experience for millions of people across the country.</p>
       <p>Join us on our journey as we strive to make every meal a memorable one!</p>
+<Outlet/>
+
     </div>
     )
 

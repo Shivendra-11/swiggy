@@ -8,16 +8,16 @@ import { Link } from 'react-router-dom';
       <div  className='all_content'>
       <div className='img_error'  >  
       <img src="./images/error.jpg"    loading='lazy'    />
-      </div>
+      </div> 
       <div className='headings' >
 
      
     <h1>
       We will right back 
     </h1>
-    <h2>
-      Error 404 Not Found
-    </h2>
+  <h2>
+    Error 404 not found
+  </h2>
     </div>
 </div>
 <Link to="/">
