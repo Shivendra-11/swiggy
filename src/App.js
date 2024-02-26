@@ -57,7 +57,9 @@ export default function AppLayout() {
           <Route  path="/*" element={<Error />} />
           <Route  path="/restaurant/:id" element={<RestrauntMenu />} />
 
-          <Route  path="/Instamart" element={<Suspense><Instamart /></Suspense>} />
+          <Route  path="/Instamart" element={<Suspense>
+            <Instamart />
+            </Suspense>} />
         </Routes>
         {/* this header and footer are have to keep with every page  */}
         <Footer />

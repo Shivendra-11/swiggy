@@ -5,8 +5,8 @@ function Error() {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-col items-center space-y-4">
-        <div className="img_error">
-          <img src="./images/error.jpg" loading="lazy" alt="Error" />
+        <div className="img_error  w-[500px] ">
+          <img src="./images/error.jpg" loading="lazy" alt="Error"   />
         </div>
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-800">We will be right back</h1>
