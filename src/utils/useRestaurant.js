@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react';
 import {RES_MENU_LIST} from '../config';
-function useRestaurant(){
+function useRestaurant({id}){
     const [restaurantmenu,setresaturantmenu]=useState(null)
  
     useEffect(()=>{
@@ -11,7 +11,7 @@ function useRestaurant(){
    
     async function getRestaurantList(){
      
-        const data = await fetch( RES_MENU_LIST);
+        const data = await fetch( RES_MENU_LIST+id);
         const response= await data.json();
         console.log(response);
         // console.log(response?.data?.cards[3]?.card?.card?.info);

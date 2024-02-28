@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState ,useContext } from "react";
+import UserContext from "../utils/usercontext";
 import { Link } from "react-router-dom";
 
 const Title = () => (
@@ -15,6 +16,7 @@ const Title = () => (
 );
 
 const Header = () => {
+  
   const [islogedin, setislogedin] = useState(false);
   return (
     <div className="header  bg-blue-950 flex flex-row gap-10 items-center justify-between ">
@@ -52,6 +54,9 @@ const Header = () => {
           </li>
         </ul>
       </div>
+
+
+
       {islogedin ? (
         <button
           onClick={() => {

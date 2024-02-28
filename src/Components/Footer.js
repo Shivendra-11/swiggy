@@ -1,7 +1,8 @@
-import React from 'react';
-
+import React,{useContext} from 'react';
+import UserContext from '../utils/usercontext';
 const Footer = () => {
   const year = new Date().getFullYear();
+  const {user}=useContext(UserContext);
   return (
     <div className="bg-gray-800 text-white py-7 text-center">
       Created By{' '}
@@ -19,6 +20,7 @@ const Footer = () => {
       <strong className="ml-1">
         Food<span className="text-red-500">Villa</span>
       </strong>
+      <h1>{user.name}--{user.email}</h1>
     </div>
   );
 };
