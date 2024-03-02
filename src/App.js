@@ -13,25 +13,12 @@ import Error from "./Components/Error";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RestrauntMenu from "./Components/RestrauntMenu";
 import Profile from "./Components/Profile";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import UserContext from "./utils/usercontext";
 // import Instamart from "./Components/Instamart";
 
-/* My Food App structure will look like this, 
-            1) Header
-                - Logo
-                - Nav Items(right side)
-                - Cart
-            2) Body
-                - Search bar
-                - Restaurants List
-                    - Restaurant card
-                        - Image
-                        - Name
-                        - Rating
-            3) Footer
-                - Links
-                - Copyrights
-       
-*/
+
 
 // lazy import ---use when too many components are there if we use lazy load import then our component will onlyh be trigger if we click on it..
 
@@ -40,9 +27,11 @@ const Instamart=lazy(()=>
 
 export default function AppLayout() {
   return (
-    <>
-      <Router>
+    <Provider>
+      
+     <Router>
         <Header />
+        
 
         <Routes>
         {/* we have to use nav bar list item to be load quickly then we use this */}
@@ -65,6 +54,25 @@ export default function AppLayout() {
         <Footer />
 
       </Router>
-    </>
+
+      </Provider>
+   
   );
 }
+/* My Food App structure will look like this, 
+            1) Header
+                - Logo
+                - Nav Items(right side)
+                - Cart
+            2) Body
+                - Search bar
+                - Restaurants List
+                    - Restaurant card
+                        - Image
+                        - Name
+                        - Rating
+            3) Footer
+                - Links
+                - Copyrights
+       
+*/

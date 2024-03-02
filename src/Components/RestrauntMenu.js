@@ -19,7 +19,7 @@ function RestrauntMenu() {
   return  (!restaurantmenu) ? <Shimmer/>: (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-red-600 mb-4">Restaurant : {id}</h1>
-      <h2 className="text-2xl font-normal text-gray-800 mb-2">namste react</h2>
+      {/* <h2 className="text-2xl font-normal text-gray-800 mb-2">namste react</h2> */}
        <img className="w-96 h-64 object-cover rounded-lg" src={IMG_CDN_URL+restaurantmenu?.cloudinaryImageId}  />
         <h3 className="text-xl font-medium text-gray-800 mt-4">loclity:{restaurantmenu?.locality}</h3>
         <h3 className="text-xl font-medium text-gray-800 mt-2">{restaurantmenu?.costForTwo}</h3>

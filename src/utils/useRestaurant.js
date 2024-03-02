@@ -15,7 +15,7 @@ function useRestaurant({id}){
         const response= await data.json();
         console.log(response);
         // console.log(response?.data?.cards[3]?.card?.card?.info);
-        setresaturantmenu(response?.data?.cards[2]?.card?.card?.info);
+        setresaturantmenu(response?.data?.cards[0]?.card?.card?.info);
     }
     // return restaurantmenu data
 return restaurantmenu; 
