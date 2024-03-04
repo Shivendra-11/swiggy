@@ -1,6 +1,8 @@
 import { useState ,useContext } from "react";
 import UserContext from "../utils/usercontext";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import store from "../utils/store";
 
 const Title = () => (
   <a href="/">
@@ -16,7 +18,8 @@ const Title = () => (
 );
 
 const Header = () => {
-  
+  const cartItem=useSelector(store=>store.cart.items);
+  console.log(cartItem);
   const [islogedin, setislogedin] = useState(false);
   return (
     <div className="header  bg-blue-950 flex flex-row gap-10 items-center justify-between ">
@@ -52,6 +55,17 @@ const Header = () => {
           <li>
             <i className="fa-solid fa-cart-shopping"></i>
           </li>
+          <Link
+              to="/Cart"
+              className="text-blue-800 hover:text-blue-700"
+            >
+          <li className="bg-gray-400 text-blue-800 cursor-pointer rounded-md px-3 py-2 text-sm font-medium" >
+           
+              cart-{cartItem.length}
+            
+          
+          </li>
+          </Link>
         </ul>
       </div>
 

@@ -13,9 +13,8 @@ import Error from "./Components/Error";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RestrauntMenu from "./Components/RestrauntMenu";
 import Profile from "./Components/Profile";
-import { Provider } from "react-redux";
-import store from "./utils/store";
 import UserContext from "./utils/usercontext";
+import Cart from "./Components/Cart";
 // import Instamart from "./Components/Instamart";
 
 
@@ -27,7 +26,7 @@ const Instamart=lazy(()=>
 
 export default function AppLayout() {
   return (
-    <Provider>
+    
       
      <Router>
         <Header />
@@ -49,13 +48,15 @@ export default function AppLayout() {
           <Route  path="/Instamart" element={<Suspense>
             <Instamart />
             </Suspense>} />
+            <Route exact path="/Cart" element={<Cart />} />
+            
         </Routes>
         {/* this header and footer are have to keep with every page  */}
         <Footer />
 
       </Router>
 
-      </Provider>
+     
    
   );
 }
